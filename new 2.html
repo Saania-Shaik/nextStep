@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width:35%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+		.error{
+			color:red;
+		}
+    </style>
+</head>
+<body>
+    <h2>Application Form</h2>
+    <form id="applicationForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Full Name" required>
+			<span id = "nameerror" class ="error"></span>
+        </div>
+		<div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="email" required>
+			<span id = "emailerror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="location">Current Location:</label>
+            <input type="text" id="location" placeholder="Current Location" required>
+			<span id = "currenterror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="education">Education:</label>
+            <input type="text" id="education" placeholder="Education" required>
+			<span id = "educationerror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="university">University:</label>
+            <input type="text" id="university" placeholder="University" required>
+			<span id = "universityerror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="joiningYear">Joining Year:</label>
+            <input type="digit" id="joiningYear" placeholder="Joining Year" required>
+			<span id = "joinerror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="passoutYear">Graduation Year:</label>
+            <input type="digit" id="passoutYear" placeholder="Passout Year" required>
+			<span id = "passerror" class ="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="locationPreference">Preferred Location:</label>
+            <input type="text" id="locationPreference" placeholder="Preferred Location" required>
+			<span id = "locationerror" class ="error"></span>
+        </div>
+        <button type="submit">Apply</button>
+    </form>
+    <p id="successMessage" style="color: green; display: none;">Application submitted successfully!</p>
+    <script>
+    document.getElementById("applicationForm").addEventListener("submit", function(event) {
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
+    function validateForm() {
+        let isValid = true;
+
+        let name = document.getElementById("name").value;
+        let nregex = /^[A-Za-z\s]{3,}$/;
+        if (!nregex.test(name)) {
+            document.getElementById("nameerror").innerText = "Invalid Name";
+            isValid = false;
+        } else {
+            document.getElementById("nameerror").innerText = "";
+        }
+        let location = document.getElementById("location").value;
+        let cregex = /^[A-Za-z\s]{3,}$/;
+        if (!cregex.test(location)) {
+            document.getElementById("currenterror").innerText = "Invalid location";
+            isValid = false;
+        } else {
+            document.getElementById("currenterror").innerText = "";
+        }
+        let email = document.getElementById("email").value;
+        let eregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!eregex.test(email)) {
+            document.getElementById("emailerror").innerText = "Invalid Email";
+            isValid = false;
+        } else {
+            document.getElementById("emailerror").innerText = "";
+        }
+		        let joiningYear = document.getElementById("joiningYear").value;
+        let passoutYear = document.getElementById("passoutYear").value;
+        let yearRegex = /^[0-9]{4}$/;
+        if (!yearRegex.test(joiningYear)) {
+            document.getElementById("joinerror").innerText = "Invalid Year (Must be 4 digits)";
+            isValid = false;
+        } else {
+            document.getElementById("joinerror").innerText = "";
+        }
+        if (!yearRegex.test(passoutYear)) {
+            document.getElementById("passerror").innerText = "Invalid Year (Must be 4 digits)";
+            isValid = false;
+        } else {
+            document.getElementById("passerror").innerText = "";
+        }
+        return isValid;
+    }
+</script>
+</body>
+</html>

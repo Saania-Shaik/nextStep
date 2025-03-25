@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Sign in - NextStep</title>
+	<style>
+	.error{
+		color:red;
+	}
+	.divis{
+		border:2px solid black;
+		border-radius:10px;
+		padding:30px;
+		max-width:250px;
+		
+	}
+	.alignB{
+		align-items:center;
+		justify-content:center;
+		display: flex;
+	}
+	</style>
+</head>
+<body>
+    <u><h1>NextStep</h1></u>
+    <div class="divis">
+        <form id="userForm" onsubmit="return valideForm()">
+            <label for="name">Name:</label><br>
+            <input type='text' id="name"><br/><br>
+			<span id="nameError" class="error">
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email"><br><br>
+			<span id="emailError" class="error">
+			<div class="alignB">
+            <button  type="submit">Sign in</button>
+			</div>
+        </form>
+    </div>
+	<script>
+		function valideForm(){
+			let isValid = true;
+			let name=document.getElementById("name").value;
+			let nregex=/[A-Za-z\s]{3,}$/;
+			if (!nregex.test(name)){
+				document.getElementById("nameError").innerText="Invalid Name";
+				isValid=false;
+			}
+			else{
+				nameError.innerText="";
+			}
+			let emali=document.getElementById("email").value;
+			let eregex=/^[a-zA-Z0-9+%-]+@[a-zA-Z0-9_]+\.[a-zA-Z]{2,}$/
+			if (!eregex.test(email)){
+				document.getElementById("emailError").innerText="Invalid Email";
+				isValid=false;
+			}
+			else{
+				Error.innerText="";
+			}
+			return isValid;
+			
+		}
+	</script>
+</body>
+</html>
