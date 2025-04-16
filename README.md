@@ -1,4 +1,4 @@
-# nextStep
+# NextStep
 Objective
 
 To create a user-friendly, front-end module that facilitates the assignment process for the NextStep platform. This system enables teachers to upload assignments and provides a mechanism for students to submit their work, all without the need for server-side processing.
